@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Component", "Component", "{808AF3B1-813C-421A-B6B8-49F2DA505B7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Team", "Team", "{43B62DBC-D7E2-4F82-8D88-BF7A90ED3CDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamResourceAccess", "Component\Team\TeamResourceAccess\TeamResourceAccess.csproj", "{26E5A293-2E8C-4EA8-BB3E-BCD24529B918}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26E5A293-2E8C-4EA8-BB3E-BCD24529B918}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26E5A293-2E8C-4EA8-BB3E-BCD24529B918}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E5A293-2E8C-4EA8-BB3E-BCD24529B918}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26E5A293-2E8C-4EA8-BB3E-BCD24529B918}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{43B62DBC-D7E2-4F82-8D88-BF7A90ED3CDA} = {808AF3B1-813C-421A-B6B8-49F2DA505B7C}
+		{26E5A293-2E8C-4EA8-BB3E-BCD24529B918} = {43B62DBC-D7E2-4F82-8D88-BF7A90ED3CDA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D505BB99-74D9-417F-93CF-CEA16F74E741}
+	EndGlobalSection
+EndGlobal
