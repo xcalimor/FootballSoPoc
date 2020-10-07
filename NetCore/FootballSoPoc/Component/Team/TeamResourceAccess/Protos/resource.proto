@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "TeamResourceAccess.Protos";
+
+import "google/protobuf/empty.proto";
+
+service ResourceAccess{
+	rpc GetAllTeams(google.protobuf.Empty) returns (GetAllTeamsResponse);
+	rpc GetTeamById(GetTeamByIdRequest) returns (GetTeamByIdResponse);
+}
+
+message GetAllTeamsResponse{
+	repeated TeamMessage Teams = 1;
+}
+
+message GetTeamByIdRequest{
+	string TeamId = 1;
+}
+
+message GetTeamByIdResponse{
+	TeamMessage Team = 1;
+}
+
+message TeamMessage{
+	string TeamId = 1;
+	string TeamName = 2;
+	string TeamShortName = 3;
+	string ArenaName = 4;
+	int32 ArenaCapacity = 5;
+	string CityName = 6;
+	int32 CityPopulation = 7;
+
+}

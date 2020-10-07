@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccountEngine.Protos";
+
+service Engine {
+	rpc GetJwtToken(GetJwtTokenRequest) returns (GetJwtTokenResponse)
+	rpc GetRefreshToken(GetJwtTokenRequest) returns (GetJwtTokenResponse)
+}
+
+message GetJwtTokenRequest{
+	string userId = 1;
+	string name = 2;
+	string role = 3:
+}
+
+message GetJwtTokenResponse{
+	string jwtToken = 1;
+}
+
+message GetJwtTokenRequest{
+	string userId = 1;
+	string name = 2;
+	string role = 3:
+}
+
+message GetJwtTokenResponse{
+	string jwtToken = 1;
+}

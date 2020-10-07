@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "TeamResourceAccess";
+option csharp_namespace = "AccountResourceAccess";
 
 package greet;
 
