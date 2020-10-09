@@ -30,6 +30,14 @@ namespace TeamApi.Controllers
             return teams.Teams.AsEnumerable().Select(t => Map(t));
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(string id)
+        {
+            var client = _clientFactory.GetResourceAccessClient();
+            var response = await client.GetTeamByIdAsync(new GetTeamByIdRequest { TeamId = id });
+            return Ok(Map(response.Team));
+        }
+
         private TeamDetails Map(TeamMessage from)
         {
             return new TeamDetails

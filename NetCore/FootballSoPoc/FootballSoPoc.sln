@@ -33,9 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Player", "Player", "{9B3FB7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{9303CE16-5E4D-4FD2-BC5C-1C17831BBC77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoPocFramework", "Shared\SoPocFramework\SoPocFramework.csproj", "{420EB701-4107-4FC2-9C72-8ADBCD85F425}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FotballAngularClient", "Clients\Angular\FotballAngularClient\FotballAngularClient.csproj", "{E776F726-2E1A-48D1-BC01-BB354B92CC97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoPocFramework", "Shared\SoPocFramework\SoPocFramework.csproj", "{420EB701-4107-4FC2-9C72-8ADBCD85F425}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,10 +69,6 @@ Global
 		{420EB701-4107-4FC2-9C72-8ADBCD85F425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420EB701-4107-4FC2-9C72-8ADBCD85F425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{420EB701-4107-4FC2-9C72-8ADBCD85F425}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E776F726-2E1A-48D1-BC01-BB354B92CC97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E776F726-2E1A-48D1-BC01-BB354B92CC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E776F726-2E1A-48D1-BC01-BB354B92CC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E776F726-2E1A-48D1-BC01-BB354B92CC97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -93,7 +87,6 @@ Global
 		{1A6F3B0B-788C-4598-B1CB-BB8C4D6D2AD0} = {43B62DBC-D7E2-4F82-8D88-BF7A90ED3CDA}
 		{9B3FB753-642C-427B-B1BE-9D04471ED5B6} = {808AF3B1-813C-421A-B6B8-49F2DA505B7C}
 		{420EB701-4107-4FC2-9C72-8ADBCD85F425} = {9303CE16-5E4D-4FD2-BC5C-1C17831BBC77}
-		{E776F726-2E1A-48D1-BC01-BB354B92CC97} = {375B1618-FFCE-4AB5-8E2D-2648D05A3816}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D505BB99-74D9-417F-93CF-CEA16F74E741}

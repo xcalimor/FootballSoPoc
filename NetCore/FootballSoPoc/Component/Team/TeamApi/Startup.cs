@@ -26,6 +26,17 @@ namespace TeamApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
+
             services.AddScoped<IClientFactory, ClientFactory>();
         }
 
@@ -40,7 +51,9 @@ namespace TeamApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors(options => 
+                options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+            );
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

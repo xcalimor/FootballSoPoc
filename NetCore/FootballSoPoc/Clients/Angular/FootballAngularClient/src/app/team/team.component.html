@@ -1,0 +1,7 @@
+<a [routerLink]="['/teams']">Back to list</a>
+<div *ngIf="team">
+    <h2>{{team.name}}</h2>
+    <p>{{team.shortName}}</p>
+    <p>City - {{team.city}} with a population of {{team.cityPopulation}}</p>
+    <p>Arena - {{team.arenaName}} - capacity {{team.arenaCapacity}} peoples</p>
+</div>
