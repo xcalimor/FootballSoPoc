@@ -1,10 +1,10 @@
 ﻿using LeagueResourceAccess.Entity;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace LeagueResourceAccess.Resource
 {
     public interface ILeagueResource
     {
-        List<League> GetAllLeagues();
+        IQueryable<League> GetAllLeagues();
     }
 }

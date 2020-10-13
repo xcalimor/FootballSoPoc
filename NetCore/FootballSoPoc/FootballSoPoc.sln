@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoPocFramework", "Shared\So
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "League", "League", "{AC5B2965-B4F4-4B25-89B5-AD81F8D371FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueResourceAccess", "Component\League\LeagueResourceAccess\LeagueResourceAccess.csproj", "{74D08578-6F1E-43C0-AD23-4EF7772AE833}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueResourceAccess", "Component\League\LeagueResourceAccess\LeagueResourceAccess.csproj", "{74D08578-6F1E-43C0-AD23-4EF7772AE833}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueApi", "Component\League\LeagueApi\LeagueApi.csproj", "{F97503E0-6660-4021-86AA-BD70EF4478B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{74D08578-6F1E-43C0-AD23-4EF7772AE833}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74D08578-6F1E-43C0-AD23-4EF7772AE833}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74D08578-6F1E-43C0-AD23-4EF7772AE833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97503E0-6660-4021-86AA-BD70EF4478B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97503E0-6660-4021-86AA-BD70EF4478B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97503E0-6660-4021-86AA-BD70EF4478B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97503E0-6660-4021-86AA-BD70EF4478B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{420EB701-4107-4FC2-9C72-8ADBCD85F425} = {9303CE16-5E4D-4FD2-BC5C-1C17831BBC77}
 		{AC5B2965-B4F4-4B25-89B5-AD81F8D371FD} = {808AF3B1-813C-421A-B6B8-49F2DA505B7C}
 		{74D08578-6F1E-43C0-AD23-4EF7772AE833} = {AC5B2965-B4F4-4B25-89B5-AD81F8D371FD}
+		{F97503E0-6660-4021-86AA-BD70EF4478B6} = {AC5B2965-B4F4-4B25-89B5-AD81F8D371FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D505BB99-74D9-417F-93CF-CEA16F74E741}

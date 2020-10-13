@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+option csharp_namespace = "LeagueResourceAccess.Protos";
+
+service ResourceAccess {
+	rpc GetAllLeagues(GetAllLeaguesRequest) returns (GetAllLeaguesResponse);
+	rpc GetAllTeamsInLeague(GetAllTeamsInLeagueRequest) returns (GetAllTeamsInLeagueResponse);
+	rpc GetAllGameDaysOnLeague(GetAllGameDaysOnLeagueRequest) returns (GetAllGameDaysOnLeagueResponse);
+	rpc GetStandingsInLeague(GetStandingsInLeagueRequest) returns (GetStandingsInLeagueResonse);
+}
+
+//--------GetStandingsInLeague
+message GetStandingsInLeagueRequest{
+	string leagueId = 1;
+	int32 offset = 2;
+	int32 records = 3;
+}
+
+message GetStandingsInLeagueResonse{
+	int32 newOffset = 1;
+	repeated StandingMessage standings = 2;
+}
+
+message StandingMessage{
+	string id = 1;
+	string leagueId = 2;
+	string leagueTeamId = 3;
+	string memberId = 4;
+	int32 homeGames = 5;
+	int32 awayGames = 6;
+	int32 homeWins = 7;
+	int32 awayWins = 8;
+	int32 draw = 9;
+	int32 goalsAgainst = 10;
+	int32 goalsMade = 11;
+	int32 points = 12;
+}
+//--------GetStandingsInLeague
+
+//------------GetAllLeagues
+message GetAllLeaguesRequest{
+	int32 offset = 1;
+	int32 records = 2;
+}
+
+message GetAllLeaguesResponse{
+	int32 newOffset = 1;
+	repeated LeagueMessage leagues = 2;
+}
+
+message LeagueMessage{
+	string leagueId = 1;
+	string name = 2;
+}
+//------------GetAllLeagues
+
+//-------------GetAllTeamsInLeague
+message GetAllTeamsInLeagueRequest{
+	string leagueId = 1;
+	int32 offset = 2;
+	int32 records = 3;
+}
+
+message GetAllTeamsInLeagueResponse{
+	int32 newOffset = 1;
+	repeated LeagueTeamsMessage teams = 2;
+}
+
+message LeagueTeamsMessage{
+	string leagueTeamId = 1;
+	string leagueId = 2;
+	string teamId = 3;
+	int32 rank = 4;
+}
+//-------------GetAllTeamsInLeague
+
+//------------GetAllGameDaysOnLeague
+message GetAllGameDaysOnLeagueRequest{
+	string leagueId	 = 1;
+	int32 offset = 2;
+	int32 records = 3;
+}
+
+message GetAllGameDaysOnLeagueResponse{
+	int32 newOffset = 1;
+	repeated GameDayMessage gameDays = 2;
+}
+
+message GameDayMessage {
+	string gameDayId = 1;
+	string leagueId = 2;
+	string sheduledAt = 3;
+	string homeTeamLeagueTeamId	= 4;
+	string awayTeamLeagueTeamId	= 5;
+	repeated ScorerMessage homeScorers = 6;
+	repeated ScorerMessage awayScorers = 7;
+}
+
+message ScorerMessage{
+	string leaguePlayerId = 1;
+	int32 scoredInMinute = 2;
+	string assistedByLeaguePlayerId = 3;
+}        
+
+//------------GetAllGameDaysOnLeague
+
+
+

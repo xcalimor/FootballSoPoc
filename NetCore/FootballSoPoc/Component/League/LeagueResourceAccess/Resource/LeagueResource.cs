@@ -1,16 +1,32 @@
 ﻿using LeagueResourceAccess.Entity;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace LeagueResourceAccess.Resource
 {
     public class LeagueResource : ILeagueResource
     {
-        public List<League> GetAllLeagues()
+        private readonly ILogger<LeagueResource> _logger;
+        private readonly ResourceContext _resourceContext;
+
+        public LeagueResource(ILogger<LeagueResource> logger, ResourceContext resourceContext)
         {
-            throw new NotImplementedException();
+            _logger = logger;
+            _resourceContext = resourceContext;
+        }
+        public IQueryable<League> GetAllLeagues()
+        {
+            try
+            {
+                return _resourceContext.Set<League>();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
     }
 }
