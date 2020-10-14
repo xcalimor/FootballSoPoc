@@ -3,10 +3,18 @@ syntax = "proto3";
 option csharp_namespace = "LeagueResourceAccess.Protos";
 
 service ResourceAccess {
+	rpc GetLeagueOnId(GetLeagueOnIdRequest) returns (GetLeagueOnIdResponse);
 	rpc GetAllLeagues(GetAllLeaguesRequest) returns (GetAllLeaguesResponse);
 	rpc GetAllTeamsInLeague(GetAllTeamsInLeagueRequest) returns (GetAllTeamsInLeagueResponse);
 	rpc GetAllGameDaysOnLeague(GetAllGameDaysOnLeagueRequest) returns (GetAllGameDaysOnLeagueResponse);
 	rpc GetStandingsInLeague(GetStandingsInLeagueRequest) returns (GetStandingsInLeagueResonse);
+}
+
+message GetLeagueOnIdRequest{
+	string leagueId = 1;
+}
+message GetLeagueOnIdResponse{
+	LeagueMessage league = 1;
 }
 
 //--------GetStandingsInLeague

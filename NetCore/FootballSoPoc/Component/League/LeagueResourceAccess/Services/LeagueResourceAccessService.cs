@@ -2,6 +2,7 @@
 using LeagueResourceAccess.Entity;
 using LeagueResourceAccess.Protos;
 using LeagueResourceAccess.Resource;
+using Microsoft.AspNetCore.Authentication.OAuth.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -20,6 +21,19 @@ namespace LeagueResourceAccess.Services
             _logger = logger;
             _leagueResource = leagueResource;
         }
+
+        public override async Task<GetLeagueOnIdResponse> GetLeagueOnId(GetLeagueOnIdRequest request, ServerCallContext context)
+        {
+            _logger.LogInformation(">LeagueResourceAccessService.GetLeagueOnId");
+            var leagueId = Guid.Parse(request.LeagueId);
+            var league = await _leagueResource.GetAllLeagues().SingleAsync(l => l.Id == leagueId);
+
+            return new GetLeagueOnIdResponse
+            {
+                League = Helper.Mapper.Map(league)
+            };
+        }
+
         public override async Task<GetStandingsInLeagueResonse> GetStandingsInLeague(GetStandingsInLeagueRequest request, ServerCallContext context)
         {
             _logger.LogInformation(">LeagueResourceAccessService.GetAllGameDaysOnLeague");

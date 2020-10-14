@@ -1,3 +1,4 @@
+using LeagueResourceAccess.Protos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -20,9 +21,9 @@ namespace LeagueApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddHttpClient("LeagueResourceAccessClient", c =>
+            services.AddGrpcClient<ResourceAccess.ResourceAccessClient>(o =>
             {
-                c.BaseAddress = new Uri(Configuration["ServiceUrl:LeagueResourceAccessClient"]);
+                o.Address = new Uri(Configuration["ServiceUrl:LeagueResourceAccessClient"]);
             });
         }
 

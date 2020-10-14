@@ -10,6 +10,7 @@ namespace LeagueResourceAccess.Entity
         [ForeignKey("LeagueId")]
         public Guid LeagueId { get; set; }
         public Guid TeamId { get; set; }
+        public string TeamName { get; set; }
         public int Rank { get; set; }
     }
 }
