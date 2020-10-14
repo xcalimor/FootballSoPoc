@@ -105,7 +105,7 @@ message GameDayMessage {
 }
 
 message ScorerMessage{
-	string leaguePlayerId = 1;
+	string playerId = 1;
 	int32 scoredInMinute = 2;
 	string assistedByLeaguePlayerId = 3;
 }        

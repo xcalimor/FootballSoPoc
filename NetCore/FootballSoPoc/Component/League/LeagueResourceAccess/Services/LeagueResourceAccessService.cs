@@ -57,6 +57,10 @@ namespace LeagueResourceAccess.Services
             }
 
             var response = new GetStandingsInLeagueResonse();
+            
+            if (standings == null)
+                return response;
+
             foreach (var t in standings)
             {
                 try

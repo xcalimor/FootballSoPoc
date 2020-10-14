@@ -45,7 +45,7 @@ namespace LeagueResourceAccess.Services.Helper
         {
             return new ScorerMessage
             {
-                LeaguePlayerId = from.LeaguePlayerId.ToString(),
+                PlayerId = from.PlayerId.ToString(),
                 AssistedByLeaguePlayerId = from.AssistedByLeaguePlayerId.ToString(),
                 ScoredInMinute = from.ScoredInMinute
             };
