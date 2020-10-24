@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using TeamResourceAccess.Entity;
 
 namespace TeamResourceAccess
@@ -46,29 +47,29 @@ namespace TeamResourceAccess
                 new City { CityId = wolverhamptonId, Name = "Wolverhampton", Population = 77997 }
                 );
 
-
+            var allTeamsId = SoPocDataProducer.TeamProducer.GetAllTeams();
 
             modelBuilder.Entity<Team>().HasData(
-                new Team { TeamId = Guid.NewGuid(), Name = "Arsenal", CityId = londonId, ArenaName = "Emirates Stadium", ArenaCapacity = 60704 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Aston Villa", CityId = birminghamId, ArenaName = "Villa Park", ArenaCapacity = 42749 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Brighton & Hove Albion", CityId = brightonNHoveId, ArenaName =  "American Express Community Stadium", ArenaCapacity = 30750 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Burnley", CityId = burnleyId, ArenaName = "Turf Moor", ArenaCapacity = 21944 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Chelsea", CityId = londonId, ArenaName = "Stamford Bridge", ArenaCapacity = 41631 },
-                new Team { TeamId = Guid.NewGuid(), Name = "Crystal Palace", CityId = londonId, ArenaName = "Selhurst Park", ArenaCapacity = 26125 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Everton", CityId = liverpoolId, ArenaName = "Goodison Park", ArenaCapacity = 39572 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Fulham", CityId = londonId, ArenaName = "Craven Cottage", ArenaCapacity = 25700 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Leeds United", CityId = LeedsId, ArenaName = "Elland Road", ArenaCapacity = 37890 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Leicester City", CityId = LeicesterId, ArenaName = "King Power Stadium", ArenaCapacity = 32312 },
-                new Team { TeamId = Guid.NewGuid(), Name = "Liverpool", CityId = liverpoolId, ArenaName = "Anfield", ArenaCapacity = 54074 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Manchester City", CityId = manchesterId, ArenaName = "Etihad Stadium", ArenaCapacity = 55097 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Manchester United", CityId = manchesterId, ArenaName = "Old Trafford", ArenaCapacity = 74994 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Newcastle United", CityId = newcastleId, ArenaName = "St James' Park", ArenaCapacity = 52354 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Sheffield United", CityId = sheffieldId, ArenaName = "Bramall Lane", ArenaCapacity = 32609 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Southampton", CityId = southamptonId, ArenaName = "St Mary's Stadium", ArenaCapacity = 32505 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Tottenham Hotspur", CityId = londonId, ArenaName = "Tottenham Hotspur Stadium", ArenaCapacity = 62062 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "West Bromwich Albion", CityId = westBromwichId, ArenaName = "The Hawthorns", ArenaCapacity = 26688 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "West Ham United", CityId = londonId, ArenaName = "Londons Olympiastadion", ArenaCapacity = 60000 } ,
-                new Team { TeamId = Guid.NewGuid(), Name = "Wolverhampton Wanderers", CityId = wolverhamptonId, ArenaName = "Molineux Stadium", ArenaCapacity = 32050 } 
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Arsenal").Id, Name = "Arsenal", CityId = londonId, ArenaName = "Emirates Stadium", ArenaCapacity = 60704 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Aston Villa").Id, Name = "Aston Villa", CityId = birminghamId, ArenaName = "Villa Park", ArenaCapacity = 42749 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Brighton & Hove Albion").Id, Name = "Brighton & Hove Albion", CityId = brightonNHoveId, ArenaName = "American Express Community Stadium", ArenaCapacity = 30750 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Burnley").Id, Name = "Burnley", CityId = burnleyId, ArenaName = "Turf Moor", ArenaCapacity = 21944 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Chelsea").Id, Name = "Chelsea", CityId = londonId, ArenaName = "Stamford Bridge", ArenaCapacity = 41631 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Crystal Palace").Id, Name = "Crystal Palace", CityId = londonId, ArenaName = "Selhurst Park", ArenaCapacity = 26125 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Everton").Id, Name = "Everton", CityId = liverpoolId, ArenaName = "Goodison Park", ArenaCapacity = 39572 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Fulham").Id, Name = "Fulham", CityId = londonId, ArenaName = "Craven Cottage", ArenaCapacity = 25700 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Leeds United").Id, Name = "Leeds United", CityId = LeedsId, ArenaName = "Elland Road", ArenaCapacity = 37890 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Leicester City").Id, Name = "Leicester City", CityId = LeicesterId, ArenaName = "King Power Stadium", ArenaCapacity = 32312 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Liverpool").Id, Name = "Liverpool", CityId = liverpoolId, ArenaName = "Anfield", ArenaCapacity = 54074 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Manchester City").Id, Name = "Manchester City", CityId = manchesterId, ArenaName = "Etihad Stadium", ArenaCapacity = 55097 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Manchester United").Id, Name = "Manchester United", CityId = manchesterId, ArenaName = "Old Trafford", ArenaCapacity = 74994 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Newcastle United").Id, Name = "Newcastle United", CityId = newcastleId, ArenaName = "St James' Park", ArenaCapacity = 52354 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Sheffield United").Id, Name = "Sheffield United", CityId = sheffieldId, ArenaName = "Bramall Lane", ArenaCapacity = 32609 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Southampton").Id, Name = "Southampton", CityId = southamptonId, ArenaName = "St Mary's Stadium", ArenaCapacity = 32505 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Tottenham Hotspur").Id, Name = "Tottenham Hotspur", CityId = londonId, ArenaName = "Tottenham Hotspur Stadium", ArenaCapacity = 62062 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "West Bromwich Albion").Id, Name = "West Bromwich Albion", CityId = westBromwichId, ArenaName = "The Hawthorns", ArenaCapacity = 26688 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "West Ham United").Id, Name = "West Ham United", CityId = londonId, ArenaName = "Londons Olympiastadion", ArenaCapacity = 60000 },
+                new Team { TeamId = allTeamsId.Single(t => t.Name == "Wolverhampton Wanderers").Id, Name = "Wolverhampton Wanderers", CityId = wolverhamptonId, ArenaName = "Molineux Stadium", ArenaCapacity = 32050 }
             );
         }
     }

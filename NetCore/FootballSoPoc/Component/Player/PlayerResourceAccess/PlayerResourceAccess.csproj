@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\resource.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.27.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\SoPocDataProducer\SoPocDataProducer.csproj" />
-    <ProjectReference Include="..\..\..\Shared\SoPocFramework\SoPocFramework.csproj" />
   </ItemGroup>
 
 </Project>

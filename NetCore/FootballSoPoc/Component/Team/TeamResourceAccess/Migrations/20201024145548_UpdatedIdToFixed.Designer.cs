@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamResourceAccess;
 
 namespace TeamResourceAccess.Migrations
 {
     [DbContext(typeof(ResourceContext))]
-    partial class ResourceContextModelSnapshot : ModelSnapshot
+    [Migration("20201024145548_UpdatedIdToFixed")]
+    partial class UpdatedIdToFixed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
