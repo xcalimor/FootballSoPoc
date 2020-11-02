@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\SoPocDataProducer\SoPocDataProducer.csproj" />
     <ProjectReference Include="..\..\..\Shared\SoPocFramework\SoPocFramework.csproj" />
   </ItemGroup>
 

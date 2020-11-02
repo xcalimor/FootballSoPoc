@@ -23,7 +23,7 @@ namespace TeamResourceAccess.Services
             _teamResource = teamResource;
         }
 
-        public override async Task<GetAllTeamsResponse> GetAllTeams(Empty request, ServerCallContext context)
+       public override async Task<GetAllTeamsResponse> GetAllTeams(Empty request, ServerCallContext context)
         {
             _logger.LogInformation(">TeamResourceAccessService.GetAllTeams");
 

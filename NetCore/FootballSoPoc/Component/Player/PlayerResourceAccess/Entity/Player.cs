@@ -5,9 +5,9 @@ namespace PlayerResourceAccess.Entity
     public class Player
     {
         public Guid Id { get; set; }
+        public PlayerContract Contract{ get; set; }
         public string Firstname { get; set; }
         public string Surname { get; set; }
-        public Guid TeamId { get; set; }
         public int Age { get; set; }
         public int Height { get; set; }
         public int Weight { get; set; }
