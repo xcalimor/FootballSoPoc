@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "TeamManager.Protos";
+
+service Manager{
+	rpc GetfreeTeams(GetfreeTeamsRequest) returns (GetfreeTeamsResponse);
+}
+
+message GetfreeTeamsRequest{
+	string FilterValue = 1;
+	int32 Offset = 2;
+	int32 RowsToReturn = 3;
+}
+
+message GetfreeTeamsResponse{
+	int32 newOffset = 1;
+	repeated TeamMessage Teams = 2;
+}
+
+message TeamMessage{
+	string TeamId = 1;
+	string TeamName = 2;
+	string TeamShortName = 3;
+	string ArenaName = 4;
+	int32 ArenaCapacity = 5;
+	string CityName = 6;
+	int32 CityPopulation = 7;
+}
+
+message ContractMessage{
+	string ContractId = 1;
+	string AccountId = 2;
+	string TeamId = 3;
+	int32 RemainingYears = 4;
+	int32 InYears = 5;
+}

@@ -1,10 +1,7 @@
-﻿using Microsoft.AspNetCore.Razor.TagHelpers;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TeamResourceAccess.Entity;
 
 namespace TeamResourceAccess.Resource
@@ -23,13 +20,20 @@ namespace TeamResourceAccess.Resource
         {
             try
             {
-                return _resourceContext.Set<Team>().Include(t=> t.City);
+                return _resourceContext.Set<Team>().Include(t=> t.City).Include(c=> c.TeamManagerContract);
             }
             catch(Exception ex)
             {
                 _logger.LogError(ex.Message);
                 throw;
             }
+        }
+
+        public Team UpdateTeam(Team team)
+        {
+            _resourceContext.Attach(team);
+            _resourceContext.SaveChanges();
+            return team;
         }
     }
 }

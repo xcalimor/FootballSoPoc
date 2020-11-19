@@ -14,7 +14,12 @@ namespace TeamResourceAccess.Entity
         [ForeignKey("CityId")]
         public City City { get; set; }
         public Guid CityId { get; set; }
-        
 
+        [ForeignKey("TeamManagerContractId")]
+        public TeamManagerContract TeamManagerContract { get; set; }
+        public Guid TeamManagerContractId { get; set; }
+
+        public Guid? AccountIdSelectionLockId { get; set; }
+        public DateTime LockedAt { get; set; }
     }
 }

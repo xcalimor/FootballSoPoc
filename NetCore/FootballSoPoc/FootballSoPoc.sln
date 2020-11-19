@@ -43,9 +43,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueApi", "Component\Leag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccountClient", "Component\Account\AccountClient\AccountClient.csproj", "{E85E1B25-40B8-4043-B74C-0CBA11B9389F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayerResourceAccess", "Component\Player\PlayerResourceAccess\PlayerResourceAccess.csproj", "{EBD4C845-64AF-4731-8F97-9947455CB6BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayerResourceAccess", "Component\Player\PlayerResourceAccess\PlayerResourceAccess.csproj", "{EBD4C845-64AF-4731-8F97-9947455CB6BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoPocDataProducer", "Shared\SoPocDataProducer\SoPocDataProducer.csproj", "{2E2AB5F8-2669-4C3B-A7F7-1D4670F81C2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoPocDataProducer", "Shared\SoPocDataProducer\SoPocDataProducer.csproj", "{2E2AB5F8-2669-4C3B-A7F7-1D4670F81C2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamManager", "Component\Team\TeamManager\TeamManager.csproj", "{68D5CDD1-63E7-48BB-9F4D-847485E90C71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,10 @@ Global
 		{2E2AB5F8-2669-4C3B-A7F7-1D4670F81C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E2AB5F8-2669-4C3B-A7F7-1D4670F81C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E2AB5F8-2669-4C3B-A7F7-1D4670F81C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68D5CDD1-63E7-48BB-9F4D-847485E90C71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D5CDD1-63E7-48BB-9F4D-847485E90C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D5CDD1-63E7-48BB-9F4D-847485E90C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D5CDD1-63E7-48BB-9F4D-847485E90C71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +131,7 @@ Global
 		{E85E1B25-40B8-4043-B74C-0CBA11B9389F} = {C6DE1AD1-E4C8-4D10-B452-CB68A79B3D6C}
 		{EBD4C845-64AF-4731-8F97-9947455CB6BE} = {9B3FB753-642C-427B-B1BE-9D04471ED5B6}
 		{2E2AB5F8-2669-4C3B-A7F7-1D4670F81C2F} = {9303CE16-5E4D-4FD2-BC5C-1C17831BBC77}
+		{68D5CDD1-63E7-48BB-9F4D-847485E90C71} = {43B62DBC-D7E2-4F82-8D88-BF7A90ED3CDA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D505BB99-74D9-417F-93CF-CEA16F74E741}

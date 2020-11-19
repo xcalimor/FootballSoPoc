@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SoPocDataProducer;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using TeamResourceAccess.Entity;
 
@@ -14,6 +16,7 @@ namespace TeamResourceAccess
 
         public DbSet<Team> Teams { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<TeamManagerContract> TeamManagerContracts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -76,56 +79,78 @@ namespace TeamResourceAccess
 
             var allTeamsId = SoPocDataProducer.TeamProducer.GetAllTeams();
 
+            var contracts = new List<TeamManagerContract>();
+            var allTeamEntities = new List<Team>
+            {
+                CreateTeam(allTeamsId.Single(t => t.Name == "Arsenal"), londonId, "Emirates Stadium", 60704, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Aston Villa"), birminghamId, "Villa Park", 42749, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Brighton & Hove Albion"), brightonNHoveId, "American Express Community Stadium", 30750, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Burnley"), burnleyId, "Turf Moor", 21944, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Chelsea"), londonId, "Stamford Bridge", 41631, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Crystal Palace"), londonId, "Selhurst Park", 26125, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Everton"), liverpoolId, "Goodison Park", 39572, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Fulham"), londonId, "Craven Cottage", 25700, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Leeds United"), LeedsId, "Elland Road", 37890, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Leicester City"), LeicesterId, "King Power Stadium", 32312, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Liverpool"), liverpoolId, "Anfield", 54074, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Manchester City"), manchesterId, "Etihad Stadium", 55097, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Manchester United"), manchesterId, "Old Trafford", 74994, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Newcastle United"), newcastleId, "St James' Park", 52354, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Sheffield United"), sheffieldId, "Bramall Lane", 32609, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Southampton"), southamptonId, "St Mary's Stadium", 32505, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Tottenham Hotspur"), londonId, "Tottenham Hotspur Stadium", 62062, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "West Bromwich Albion"), westBromwichId, "The Hawthorns", 26688, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "West Ham United"), londonId, "Londons Olympiastadion", 60000, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Wolverhampton Wanderers"), wolverhamptonId, "Molineux Stadium", 32050, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Reading"), readingId, "Madejski Stadium", 24161, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Bristol City"), bristolCityId, "Ashton Gate Stadium", 27000, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Watford"), watfordId, "Vicarage Road", 21577, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Bournemouth"), bournemouthId, "Vitality Stadium", 11364, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Norwich City"), norwichCityId, "Carrow Road", 27244, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Swansea City"), swanseaCityId, "Liberty Stadium", 21088, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Millwall"), londonId, "The Den", 20146, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Stoke City"), stokeCityId, "Bet365 Stadium", 30089, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Luton Town"), lutonTownId, "Kenilworth Road", 10356, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Blackburn Rovers"), blackburnRoversId, "Ewood Park", 31367, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Brentford"), londonId, "Brentford Community Stadium", 17250, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Preston North End"), PrestonNorthEndiD, "Deepdale", 23404, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Middlesbrough"), MiddlesbroughiD, "Riverside Stadium", 34742, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Huddersfield Town"), huddersfieldTownId, "John Smith's Stadium", 24500, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Cardiff City"), cardiffCityId, "Cardiff City Stadium", 33280, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Queens Park Rangers"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Birmingham City"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Rotherham United"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Nottingham Forest"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Coventry City"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Barnsley"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Derby County"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Wycombe Wanderers"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid()),
+                CreateTeam(allTeamsId.Single(t => t.Name == "Sheffield Wednesday"), londonId, "Loftus Road", 18439, ref contracts, Guid.NewGuid())
+            };
 
-            modelBuilder.Entity<Team>().HasData(
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Arsenal").Id, Name = "Arsenal", CityId = londonId, ArenaName = "Emirates Stadium", ArenaCapacity = 60704 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Aston Villa").Id, Name = "Aston Villa", CityId = birminghamId, ArenaName = "Villa Park", ArenaCapacity = 42749 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Brighton & Hove Albion").Id, Name = "Brighton & Hove Albion", CityId = brightonNHoveId, ArenaName = "American Express Community Stadium", ArenaCapacity = 30750 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Burnley").Id, Name = "Burnley", CityId = burnleyId, ArenaName = "Turf Moor", ArenaCapacity = 21944 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Chelsea").Id, Name = "Chelsea", CityId = londonId, ArenaName = "Stamford Bridge", ArenaCapacity = 41631 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Crystal Palace").Id, Name = "Crystal Palace", CityId = londonId, ArenaName = "Selhurst Park", ArenaCapacity = 26125 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Everton").Id, Name = "Everton", CityId = liverpoolId, ArenaName = "Goodison Park", ArenaCapacity = 39572 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Fulham").Id, Name = "Fulham", CityId = londonId, ArenaName = "Craven Cottage", ArenaCapacity = 25700 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Leeds United").Id, Name = "Leeds United", CityId = LeedsId, ArenaName = "Elland Road", ArenaCapacity = 37890 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Leicester City").Id, Name = "Leicester City", CityId = LeicesterId, ArenaName = "King Power Stadium", ArenaCapacity = 32312 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Liverpool").Id, Name = "Liverpool", CityId = liverpoolId, ArenaName = "Anfield", ArenaCapacity = 54074 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Manchester City").Id, Name = "Manchester City", CityId = manchesterId, ArenaName = "Etihad Stadium", ArenaCapacity = 55097 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Manchester United").Id, Name = "Manchester United", CityId = manchesterId, ArenaName = "Old Trafford", ArenaCapacity = 74994 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Newcastle United").Id, Name = "Newcastle United", CityId = newcastleId, ArenaName = "St James' Park", ArenaCapacity = 52354 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Sheffield United").Id, Name = "Sheffield United", CityId = sheffieldId, ArenaName = "Bramall Lane", ArenaCapacity = 32609 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Southampton").Id, Name = "Southampton", CityId = southamptonId, ArenaName = "St Mary's Stadium", ArenaCapacity = 32505 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Tottenham Hotspur").Id, Name = "Tottenham Hotspur", CityId = londonId, ArenaName = "Tottenham Hotspur Stadium", ArenaCapacity = 62062 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "West Bromwich Albion").Id, Name = "West Bromwich Albion", CityId = westBromwichId, ArenaName = "The Hawthorns", ArenaCapacity = 26688 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "West Ham United").Id, Name = "West Ham United", CityId = londonId, ArenaName = "Londons Olympiastadion", ArenaCapacity = 60000 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Wolverhampton Wanderers").Id, Name = "Wolverhampton Wanderers", CityId = wolverhamptonId, ArenaName = "Molineux Stadium", ArenaCapacity = 32050 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Reading").Id, Name = "Reading", CityId = readingId, ArenaName = "Madejski Stadium", ArenaCapacity = 24161 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Bristol City").Id, Name = "Bristol City", CityId = bristolCityId, ArenaName = "Ashton Gate Stadium", ArenaCapacity = 27000 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Watford").Id, Name = "Watford", CityId = watfordId, ArenaName = "Vicarage Road", ArenaCapacity = 21577 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Bournemouth").Id, Name = "Bournemouth", CityId = bournemouthId, ArenaName = "Vitality Stadium", ArenaCapacity = 11364 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Norwich City").Id, Name = "Norwich City", CityId = norwichCityId, ArenaName = "Carrow Road", ArenaCapacity = 27244 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Swansea City").Id, Name = "Swansea City", CityId = swanseaCityId, ArenaName = "Liberty Stadium", ArenaCapacity = 21088 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Millwall").Id, Name = "Millwall", CityId = londonId, ArenaName = "The Den", ArenaCapacity = 20146 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Stoke City").Id, Name = "Stoke City", CityId = stokeCityId, ArenaName = "Bet365 Stadium", ArenaCapacity = 30089 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Luton Town").Id, Name = "Luton Town", CityId = lutonTownId, ArenaName = "Kenilworth Road", ArenaCapacity = 10356 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Blackburn Rovers").Id, Name = "Blackburn Rovers", CityId = blackburnRoversId, ArenaName = "Ewood Park", ArenaCapacity = 31367 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Brentford").Id, Name = "Brentford", CityId = londonId, ArenaName = "Brentford Community Stadium", ArenaCapacity = 17250 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Preston North End").Id, Name = "Preston North End", CityId = PrestonNorthEndiD, ArenaName = "Deepdale", ArenaCapacity = 23404 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Middlesbrough").Id, Name = "Middlesbrough", CityId = MiddlesbroughiD, ArenaName = "Riverside Stadium", ArenaCapacity = 34742 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Huddersfield Town").Id, Name = "Huddersfield Town", CityId = huddersfieldTownId, ArenaName = "John Smith's Stadium", ArenaCapacity = 24500 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Cardiff City").Id, Name = "Cardiff City", CityId = cardiffCityId, ArenaName = "Cardiff City Stadium", ArenaCapacity = 33280 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Queens Park Rangers").Id, Name = "Queens Park Rangers", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Birmingham City").Id, Name = "Birmingham City", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Rotherham United").Id, Name = "Rotherham United", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Nottingham Forest").Id, Name = "Nottingham Forest", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Coventry City").Id, Name = "Coventry City", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Barnsley").Id, Name = "Barnsley", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Derby County").Id, Name = "Derby County", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Wycombe Wanderers").Id, Name = "Wycombe Wanderers", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 },
-                new Team { TeamId = allTeamsId.Single(t => t.Name == "Sheffield Wednesday").Id, Name = "Sheffield Wednesday", CityId = londonId, ArenaName = "Loftus Road", ArenaCapacity = 18439 }
-               );
 
+            foreach(var c in contracts)
+            {
 
-
+            }
+            
+            //modelBuilder.Entity<TeamManagerContract>().HasData(contracts);
+            modelBuilder.Entity<Team>().HasData(Teams);
+        }
+    
+        private Team CreateTeam(TeamData TeamData, Guid cityId, string arenaName, int arenaCapacity, ref List<TeamManagerContract> contracts, Guid accountId)
+        {
+            var newContract = new TeamManagerContract
+            {
+                Id = Guid.NewGuid(),
+                AccountId = accountId,
+                InYears = 5,
+                RemainingYears = 5
+            };
+            contracts.Add(newContract);
+            return new Team { TeamId = TeamData.Id, Name = TeamData.Name, CityId = cityId, ArenaName = arenaName, ArenaCapacity = arenaCapacity, TeamManagerContractId = newContract.Id };
         }
     }
+
+
 }
