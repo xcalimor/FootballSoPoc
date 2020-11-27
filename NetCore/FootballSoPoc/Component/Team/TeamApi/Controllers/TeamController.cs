@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TeamApi.Model;
@@ -28,6 +27,14 @@ namespace TeamApi.Controllers
             var client = _clientFactory.GetResourceAccessClient();
             var teams = await client.GetAllTeamsAsync(request);
             return teams.Teams.AsEnumerable().Select(t => Map(t));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(string id)
+        {
+            var client = _clientFactory.GetResourceAccessClient();
+            var response = await client.GetTeamByIdAsync(new GetTeamByIdRequest { TeamId = id });
+            return Ok(Map(response.Team));
         }
 
         private TeamDetails Map(TeamMessage from)

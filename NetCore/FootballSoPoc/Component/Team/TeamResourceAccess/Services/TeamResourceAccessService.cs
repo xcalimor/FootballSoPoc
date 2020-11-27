@@ -36,7 +36,8 @@ namespace TeamResourceAccess.Services
                 {
                     var teamMessage = Map(team);
                     response.Teams.Add(teamMessage);
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     _logger.LogError(ex.Message);
                     throw;
@@ -60,6 +61,30 @@ namespace TeamResourceAccess.Services
             return response;
         }
 
+        public override async Task<UpdateTeamRequestResponse> UpdateTeam(UpdateTeamRequest request, ServerCallContext context)
+        {
+            _logger.LogInformation(">TeamResourceAccessService.UpdateTeam");
+            var teamId = Guid.Parse(request.TeamId);
+
+            var team = await _teamResource.GetAllTeams().SingleOrDefaultAsync(t => t.TeamId == teamId);
+            team.Name = request.TeamName;
+            team.ShortName = request.TeamShortName;
+            team.ArenaName = request.ArenaName;
+            team.ArenaCapacity = request.ArenaCapacity;
+
+            if (request.TeamManagerContract != null)
+            {
+                team.TeamManagerContract.InYears = request.TeamManagerContract.InYears;
+                team.TeamManagerContract.RemainingYears = request.TeamManagerContract.RemainingYears;
+            }
+
+            var updatedTeam = _teamResource.UpdateTeam(team);
+            return new UpdateTeamRequestResponse
+            {
+                UpdatedTeam = Map(updatedTeam)
+            };
+        }
+
         private TeamMessage Map(Team from)
         {
             return new TeamMessage
@@ -73,7 +98,5 @@ namespace TeamResourceAccess.Services
                 CityPopulation = (from.City == null) ? 0 : from.City.Population
             };
         }
-
-
     }
 }

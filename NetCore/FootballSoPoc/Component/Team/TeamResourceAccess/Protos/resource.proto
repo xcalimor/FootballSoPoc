@@ -7,6 +7,27 @@ import "google/protobuf/empty.proto";
 service ResourceAccess{
 	rpc GetAllTeams(google.protobuf.Empty) returns (GetAllTeamsResponse);
 	rpc GetTeamById(GetTeamByIdRequest) returns (GetTeamByIdResponse);
+	rpc UpdateTeam(UpdateTeamRequest) returns (UpdateTeamRequestResponse);
+
+}
+
+message UpdateTeamRequest{
+	string TeamId = 1;
+	string TeamName = 2;
+	string TeamShortName = 3;
+	string ArenaName = 4;
+	int32 ArenaCapacity = 5;
+	UpdateContractMessage TeamManagerContract = 6;
+}
+
+message UpdateTeamRequestResponse{
+	TeamMessage UpdatedTeam = 1;
+}
+
+message UpdateContractMessage{
+	string ContractId = 1;
+	int32 RemainingYears = 4;
+	int32 InYears = 5;
 }
 
 message GetAllTeamsResponse{
@@ -29,5 +50,12 @@ message TeamMessage{
 	int32 ArenaCapacity = 5;
 	string CityName = 6;
 	int32 CityPopulation = 7;
-
+	ContractMessage Contract = 8;
+}
+message ContractMessage{
+	string ContractId = 1;
+	string AccountId = 2;
+	string TeamId = 3;
+	int32 RemainingYears = 4;
+	int32 InYears = 5;
 }
